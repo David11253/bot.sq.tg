@@ -3,7 +3,19 @@ const TelegramBot = require('node-telegram-bot-api');
 // Вставьте ваш API-ключ
 const token = '7551398076:AAF_p8nbLS8LYprcmyIwJeufR4GD0bADHxY';
 
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token);
+
+// Удаляем вебхуки (если они были настроены)
+bot.deleteWebHook()
+  .then(() => {
+    console.log('Webhook удален');
+  })
+  .catch(error => {
+    console.log('Ошибка удаления webhook:', error);
+  });
+
+// Используем polling для получения обновлений
+bot.startPolling();
 
 // Храним кнопки и обновления
 let lastButton = null;
