@@ -1,7 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 // Вставьте ваш API-ключ от BotFather
-const token = 'sq_my_test_bot';
+const token = '7551398076:AAF_p8nbLS8LYprcmyIwJeufR4GD0bADHxY';
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -32,10 +32,17 @@ bot.onText(/\/setbutton id\((\d+)\) txt\(([^)]+)\) link\(([^)]+)\)/, (msg, match
   });
 });
 
+// Обработчик команды /hi
+bot.onText(/\/hi/, (msg) => {
+  const chatId = msg.chat.id;
+  // Ответ на команду /hi
+  bot.sendMessage(chatId, 'Привет, я работаю!');
+});
+
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
   // Ответ на любые другие сообщения, если нужно
-  if (!msg.text.startsWith('/setbutton')) {
-    bot.sendMessage(chatId, 'Отправь команду /setbutton для создания кнопки.');
+  if (!msg.text.startsWith('/setbutton') && !msg.text.startsWith('/hi')) {
+    bot.sendMessage(chatId, 'Отправь команду /hi, чтобы проверить, работает ли бот.');
   }
 });
