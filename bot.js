@@ -5,7 +5,7 @@ const token = '7551398076:AAF_p8nbLS8LYprcmyIwJeufR4GD0bADHxY';
 
 const bot = new TelegramBot(token);
 
-// Удаляем вебхуки (если они были настроены)
+// Удаляем вебхуки перед использованием polling
 bot.deleteWebHook()
   .then(() => {
     console.log('Webhook удален');
