@@ -1,7 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 // Вставьте ваш API-ключ от BotFather
-const token = 'ВАШ_API_КЛЮЧ';
+const token = 'sq_my_test_bot';
 
 const bot = new TelegramBot(token, { polling: true });
 
